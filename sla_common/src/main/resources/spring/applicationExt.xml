@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	<description>配置一些拓展的服务</description>
+	<!--邮件发送  -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+  		 <!-- SMTP发送邮件的服务器的IP和端口 -->
+        <property name="host" value="${mail.host}" />
+        <property name="port" value="${mail.port}" />
+
+        <!-- 登陆SMTP邮件发送服务器的用户名和密码 -->
+        <property name="username" value="${mail.username}" />
+        <property name="password" value="${mail.password}" />
+
+        <!-- 获得邮件会话属性,验证登录邮件服务器是否成功-->
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+            </props>
+        </property>
+   </bean>
+</beans>
